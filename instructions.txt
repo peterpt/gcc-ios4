@@ -1,0 +1,27 @@
+Original Link : https://blog.syshalt.net/index.php/2010/09/12/compile-c-applications-with-gcc-on-ios-4-iphone/
+
+1. You will need to Jailbreak the iPhone first, search on google for more info.
+2. Install OpenSSH from Cydia.
+3. Connect iPhone to your wireless network and SSH to it.
+4. Download this application using: wget http://www.syshalt.net/pub/iphone/gcc-iphone/fake-libgcc_1.0_iphoneos-arm.deb
+5. Install libcc using: dpkg –i fake-libgcc_1.0_iphoneos-arm.deb
+6. Install iphone-gcc using this command: apt-get install iphone-gcc
+(you can download this version from my website: iphone-gcc if does not work on your device the one that is installed by default)
+7. Download using: wget http://www.syshalt.net/iphone/gcc-iphone/sdk-2.0-headers.tar.gz
+8. Untar with command: tar -xvzf sdk-2.0-headers.tar.gz
+9. Enter in the new created folder with: cd include-2.0-sdk-ready-for-iphone
+10. Copy all files to include folder with command: cp –r * /usr/include
+11. Now type: cd .. in order to return to the previous folder
+12. Download using: wget http://www.syshalt.net/iphone/gcc-iphone/gcc_files.tar.gz
+13. Untar with command: tar -xvzf gcc_files.tar.gz
+14. Enter in the new created folder with command: cd gcc_files
+15. Copy all files to /usr/lib using command: cp –r * /usr/lib
+16. Install ldid to sign the application (this will prevent iOS to kill the application at startup) using: apt-get install ldid
+17. Sign your compilet aplication using: ldid –S <application>
+18. Run the application using: ./<application>
+
+Update:
+For iOS 7.x if you get errors installing gcc, try this patched version:
+
+4.1 wget http://www.syshalt.net/iphone/gcc-iphone/iphone-gcc_4.2-20080604-1-8p_iphoneos-arm.deb
+4.2 dpkg -i iphone-gcc_4.2-20080604-1-8p_iphoneos-arm.deb
